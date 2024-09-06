@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Price Comparison</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Search Results for "{{ game_name }}"</h1>
+
+        <div class="row">
+            <!-- Steam Results Column -->
+            <div class="col-md-6 results-section">
+                <h2>Steam Results</h2>
+                {% if prices.steam %}
+                    {% for result in prices.steam %}
+                        <div class="result-card">
+                            <h3>{{ result['title'] }}</h3>
+                            <p>Price: {{ result['saleprice'] or 'N/A' }}</p>
+                            <p>Original Price: {{ result['originalprice'] or 'N/A' }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No results found on Steam.</p>
+                {% endif %}
+            </div>
+
+            <!-- Ubisoft Results Column -->
+            <div class="col-md-6 results-section">
+                <h2>Ubisoft Results</h2>
+                {% if prices.ubisoft %}
+                    {% for result in prices.ubisoft %}
+                        <div class="result-card">
+                            <h3>{{ result['title'] }}</h3>
+                            <p>Price: {{ result['saleprice'] or 'N/A' }}</p>
+                            <p>Original Price: {{ result['originalprice'] or 'N/A' }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No results found on Ubisoft.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Search Again Button -->
+        <div class="text-center mt-4">
+            <form action="/">
+                <button type="submit" class="btn btn-primary">Search Again</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

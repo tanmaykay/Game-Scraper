@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GamesHub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Welcome to GamesHub</h1>
+            <p class="lead">Your ultimate destination for comparing game prices across multiple platforms.</p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Search for Game Prices</h2>
+        <form method="POST" action="/automation">
+            <div class="form-group">
+                <label for="game_name">Enter Game Name:</label>
+                <input type="text" class="form-control" id="game_name" name="game_name" placeholder="e.g., Forza Horizon">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</body>
+</html>
